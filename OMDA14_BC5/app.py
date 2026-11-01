@@ -4,7 +4,7 @@
 # ============================================================
 # Alumno: Edison Michael Salazar Ramos
 # URL Streamlit Cloud: https://tu-app-wrapped.streamlit.app
-# URL GitHub: https://github.com/esalazar-droid/BC5.git
+# URL GitHub: https://github.com/tu-usuario/tu-repo
 
 # ============================================================
 # IMPORTS
@@ -21,6 +21,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 from openai import OpenAI
+
+from pathlib import Path
+
+# Directorio donde se encuentra app.py
+BASE_DIR = Path(__file__).resolve().parent
 
 # ============================================================
 # CONSTANTES
@@ -117,13 +122,26 @@ EJEMPLO DE RESPUESTA VÁLIDA:
 # Lee el fichero JSON y prepara el DataFrame para que el código
 # que genere el LLM sea lo más simple posible.
 #
+
 @st.cache_data
 def load_data():
-    df = pd.read_json("streaming_history.json")
+
+    # Obtener la ruta del archivo JSON
+    file_path = BASE_DIR / "streaming_history.json"
+
+    # Validar que el archivo exista
+    if not file_path.exists():
+        raise FileNotFoundError(
+            f"No se encontró el archivo JSON: {file_path}"
+        )
+
+    # Cargar dataset
+    df = pd.read_json(file_path)
 
     # ----------------------------------------------------------
-    # >>> TU PREPARACIÓN DE DATOS ESTÁ AQUÍ <<<
+    # PREPARACIÓN DE DATOS
     # ----------------------------------------------------------
+
     # Conversión de fechas
     df["ts"] = pd.to_datetime(df["ts"])
 
@@ -135,12 +153,12 @@ def load_data():
     df["year"] = df["ts"].dt.year
     df["month"] = df["ts"].dt.month
     df["month_name"] = df["ts"].dt.strftime("%B")
-    df["month_year"] = df["ts"].dt.to_period("M").astype(str)
+    df["month_year"] = df["ts"].dt.strftime("%Y-%m")
     df["hour"] = df["ts"].dt.hour
     df["day_name"] = df["ts"].dt.day_name()
     df["is_weekend"] = df["ts"].dt.dayofweek >= 5
 
-    # Estaciones del año en español
+    # Estaciones del año
     def assign_season(m):
         if m in [12, 1, 2]:
             return "Invierno"
