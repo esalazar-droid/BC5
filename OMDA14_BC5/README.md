@@ -148,9 +148,8 @@ streamlit run app.py
 La aplicación está diseñada para desplegarse en Streamlit Community Cloud, utilizando GitHub como repositorio de código y Streamlit Secrets para almacenar las credenciales necesarias.
 
 - **Aplicación:** https://tu-app-wrapped.streamlit.app
-- **Repositorio:** https://github.com/tu-usuario/tu-repo
+- **Repositorio:** https://github.com/esalazar-droid/BC5.git
 
-*Nota: los enlaces anteriores son marcadores de posición y deben reemplazarse por las direcciones definitivas.*
 
 ## 🧠 Conceptos aplicados
 
