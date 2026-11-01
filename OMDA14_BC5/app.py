@@ -3,9 +3,8 @@
 # CABECERA
 # ============================================================
 # Alumno: Edison Michael Salazar Ramos
-# URL Streamlit Cloud: https://tu-app-wrapped.streamlit.app
-# URL GitHub: https://github.com/tu-usuario/tu-repo
-
+# URL Streamlit Cloud: https://nddtssamyk8dqdbtkmpz3f.streamlit.app/
+# URL GitHub: https://github.com/esalazar-droid/BC5.git
 # ============================================================
 # IMPORTS
 # ============================================================
