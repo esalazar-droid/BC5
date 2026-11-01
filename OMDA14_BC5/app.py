@@ -22,6 +22,11 @@ import plotly.graph_objects as go
 import streamlit as st
 from openai import OpenAI
 
+from pathlib import Path
+
+# Directorio donde se encuentra app.py
+BASE_DIR = Path(__file__).resolve().parent
+
 # ============================================================
 # CONSTANTES
 # ============================================================
